@@ -2,3 +2,19 @@ core-toolbar {
 	background-color:	#03A9F4	;
 	color:	white;
 }
+
+body {
+		font-family:	sans-serif;
+}
+
+[main] {
+		background-color: #F9F9F9;
+}
+
+[drawer] {
+		background-color: #FFFFFF;
+}
+
+core-drawer-panel: not([narrow]) #navicon {
+		display: none;
+}
