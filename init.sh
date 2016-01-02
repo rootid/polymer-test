@@ -13,7 +13,15 @@
 #bower install --save PolymerElements/paper-menu-button
 #bower install --save PolymerElements/paper-header-panel
 
-bower install --save PolymerElements/paper-menu
+#bower install --save PolymerElements/paper-menu
+
+bower install --save PolymerElements/paper-item
 
 
+bower install --save PolymerElements/iron-icons
+
+
+
+
+bower install --save PolymerElements/iron-image
 #bower install --save page.js
