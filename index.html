@@ -16,28 +16,54 @@
 	<link rel="import" href="bower_components/core-item/core-item.html">
 	<link rel="import" href="bower_components/core-drawer-panel/core-drawer-panel.html">
 	<link rel="import" href="bower_components/core-menu/core-menu.html">
+	<link rel="import" href="bower_components/iron-pages/iron-pages.html">
 	<link rel="stylesheet" href="app.css">
 
 </head>
 <body fullbleed layout vertical>
-	<core-drawer-panel id="drawerPanel">
-		<core-header-panel drawer> 
-		<core-toolbar>  Menu </core-toolbar>
-			<core-menu>	
-				<core-item label="One">  </core-item>
-				<core-item label="Two">  </core-item>
-			</core-menu>
-		</core-header-panel>
-		<core-header-panel main> 
-				<core-toolbar>
-					<core-icon-button id="navicon" icon="menu">
-					</core-icon-button>
-					<div class="indent middle"> My APP </div>
-					<span flex> </span>
-				</core-toolbar>
 				<div class="content">
+					<iron-pages selected="0">
+
+						<section>
+							<h1>
+									Hello
+							</h1>
+					  <div>
+									Hello
+						</div>
+						</section>
+
+						<section>
+							<h1>
+									Search
+							</h1>
+					  <div>
+									Search
+						</div>
+						</section>
+
+						<section>
+							<h1>
+									Result
+							</h1>
+					  <div>
+									Result
+						</div>
+						</section>
+
+						<section>
+							<h1>
+									Score
+							</h1>
+					  <div>
+									Score
+						</div>
+						</section>
+
+
+					</iron-pages>
 			  </div>
-		</core-header-panel>
-</core-drawer-panel>
 </body>
+
+<script src="app.js"> </script>
 </html>
