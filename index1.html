@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+	<title>FriendFlix</title>
+
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
+<link rel="import" href="bower_components/iron-image/iron-image.html">
+
+	<link rel="import" href="elements/init.html">
+	<link rel="import" href="elements/show-movies.html">
+	<link rel="stylesheet" href="app.css">
+
+</head>
+
+<body unresolved>
+
+<template is="dom-bind" id="init">
+<paper-drawer-panel id="m_panel">
+	<paper-header-panel drawer>
+		<paper-toolbar> 
+		<paper-menu-button>
+			<paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+				<paper-menu class="dropdown-content">
+					<paper-item>Latest Movies</paper-item>
+		  		<paper-item>Latest Songs</paper-item>
+		  		<paper-item>Latest Movies</paper-item>
+		  		<paper-item>Latest Operas</paper-item>
+		  	</paper-menu>
+		 </paper-menu-button>
+		</paper-toolbar>
+	</paper-header-panel>
+
+  <paper-header-panel main> 
+  <paper-toolbar> 
+  	<paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
+		<div class="title">{{title}}</div>
+  	<paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
+	</paper-toolbar>
+	<div id="c_content">
+			<section>
+				<h1> 
+						Ask Friend
+						<iron-image src="images/Circle_Green.png"></iron-image>
+				</h1>
+				
+			</section>
+
+			<section>
+				<h1> 
+						Ask Group
+						<iron-image src="images/Circle_Blue.png"></iron-image>
+				</h1>
+			</section>
+
+			<section>
+				<h1> 
+						Rate Movies
+						<iron-image src="images/Circle_Yellow.png"> </iron-image>
+				</h1>
+			</section>
+	</div>
+	</paper-header-panel>
+</paper-drawer-panel>
+</template>
+
+
+</body>
+
+<script src="app.js"> </script>
+</html>

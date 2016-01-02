@@ -4,7 +4,7 @@
 //  pages.selectNext();
 //});
 
-var title_d = document.querySelector("#app");
+var title_d = document.querySelector("#init");
 title_d.title = "FriendFlix";
 
 

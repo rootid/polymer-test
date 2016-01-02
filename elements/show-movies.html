@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--<template is="dom-bind" id="show_movies">
+
+		<div> Hi {{title}}</div>
+
+-->
+
+<dom-module id="show-movies">
+<template>
+	<section>
+		</section>
+	<paper-toolbar> 
+  	<paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
+		<div>  {{ff_title}} </div>
+  	<paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
+	</paper-toolbar>
+</template>
+
+  <script>
+  Polymer({
+    is: "show-movies",
+    ready: function() {
+      this.ff_title = "FriendFlix"
+    }
+  });
+  </script>
+</dom-module>
+
+
+<!--<show-movies title = "FriendFlix"> </show-movies> -->
+
