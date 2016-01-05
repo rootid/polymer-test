@@ -15,13 +15,11 @@
 
 #bower install --save PolymerElements/paper-menu
 
-bower install --save PolymerElements/paper-item
 
+#bower install --save PolymerElements/iron-ajax
 
-bower install --save PolymerElements/iron-icons
+#bower install --save PolymerElements/paper-item
+#bower install --save PolymerElements/iron-icons
+#bower install --save PolymerElements/iron-image
 
-
-
-
-bower install --save PolymerElements/iron-image
 #bower install --save page.js
