@@ -17,6 +17,9 @@
 
 
 #bower install --save PolymerElements/iron-ajax
+#bower install --save PolymerElements/iron-list
+
+bower install --save PolymerElements/paper-scroll-header-panel
 
 #bower install --save PolymerElements/paper-item
 #bower install --save PolymerElements/iron-icons

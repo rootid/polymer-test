@@ -1,0 +1,41 @@
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="search-movies">
+
+<template is="dom-bind">
+      <iron-ajax auto
+          url="http://localhost:9000/data/popular.json"
+          handle-as="json"
+          last-response="{{response}}">
+			</iron-ajax>
+			<iron-list items="[[response.results]]" as="item">
+					<div id="ff-child-title">	
+						{{item.original_title}}
+					</div>
+					
+					<div id="ff-child-title">	
+						{{item.release_date}}
+					</div>
+
+			</iron-list>
+</template>
+
+</dom-module>
+
+
+<script>
+	Polymer({
+	  is: "search-movies",
+	  ready: function() {
+
+	  }
+	});
+</script>
+
+
