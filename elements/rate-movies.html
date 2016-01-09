@@ -1,0 +1,279 @@
+
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../bower_components/paper-badge/paper-badge.html">
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="rate-movies">
+
+<style is="custom-style">
+     :host {
+       @apply(--layout-fit);
+       @apply(--layout-vertical);
+       @apply(--paper-font-common-base);
+
+       display: block;
+       font-family: sans-serif;
+     }
+
+    .toolbar {
+      background: var(--paper-green-500);
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      --paper-toolbar-title: {
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: bold;
+        margin-left: 0;
+      };
+    }
+
+     .toolbar paper-icon-button {
+       --paper-icon-button-ink-color: white;
+     }
+
+		/*Right box*/
+     #starredView {
+       /*width: 200px;*/
+       width: 400px;
+       border-left: 1px solid #ddd;
+     }
+
+		 /*flex hosrizontally*/
+    .twoColumns {
+      @apply(--layout-flex);
+      @apply(--layout-horizontal);
+      overflow: hidden;
+    }
+
+		 /*flex vertically*/
+     #starredView {
+       @apply(--layout-vertical);
+     }
+
+			/*apply to itemList to expand*/
+      #itemsList,
+      #selectedItemsList {
+        @apply(--layout-flex);
+      }
+
+      .item {
+        @apply(--layout-horizontal);
+        cursor: pointer;
+        padding: 16px 22px;
+        border-bottom: 1px solid #DDD;
+      }
+
+      .item:hover {
+        background-color: var(--google-grey-100);
+      }
+
+      .item:focus,
+      .item.selected:focus {
+        outline: 0;
+      }
+
+      .item.selected .star {
+        color: var(--paper-blue-600);
+      }
+
+      .item.selected {
+        background-color: var(--google-grey-100);
+      }
+
+      .noSelection {
+        color: #999;
+        margin-left: 10px;
+        line-height: 50px;
+      }
+      
+			paper-item {
+        white-space: nowrap;
+        cursor: pointer;
+        position: relative;
+      }
+
+      paper-item:focus {
+        outline: 0;
+        background-color: #ddd;
+      }
+
+      paper-item:hover::after {
+        content: "－";
+        width: 16px;
+        height: 16px;
+        display: block;
+        border-radius: 50% 50%;
+        background-color: var(--google-red-300);
+        margin-left: 10px;
+        line-height: 16px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        position: absolute;
+        right: 15px;
+        top: calc(50% - 8px);
+      }
+
+      .item:focus,
+      .item.selected:focus {
+        outline: 0;
+      }
+
+      .ff-mimg {
+        height: 160px;
+        width: 170px;
+        /*border-radius: 20px;*/
+        box-sizing: border-box;
+        background-color: #DDD;
+      }
+
+			/*Right padding to the list*/
+      .pad {
+        @apply(--layout-flex);
+        @apply(--layout-vertical);
+        padding: 0 16px;
+      }
+
+			/* font size for primary*/
+      .primary {
+        font-size: 16px;
+      }
+
+      .secondary {
+        font-size: 14px;
+      }
+
+      .dim {
+        color: gray;
+      }
+
+      .star {
+        width: 24px;
+        height: 24px;
+      }
+
+      paper-badge {
+        -webkit-transition: all 0.1s;
+        transition: all 0.1s;
+        opacity: 1;
+        margin-top: 5px;
+      }
+
+      paper-badge[label="0"] {
+        opacity: 0;
+      }
+
+
+
+</style>
+
+<template > 
+  <iron-ajax url="http://localhost:9000/data/popular.json" last-response="{{ff-movies}}" auto></iron-ajax>
+	<paper-toolbar class="toolbar">
+		<div class="title">Rate movies</div>
+		<div> 
+		<paper-badge label$="[[selectedItems.length]]"></paper-badge>
+		</div>
+	</paper-toolbar>
+   <div class="twoColumns">
+      <iron-list id="itemsList" items="[[ff-movies.results]]" as="item" selected-items="{{selectedItems}}" selection-enabled multi-selection>
+			          <template>
+			            <div>
+			              <div tabindex="0" aria-label$="[[_getAriaLabel(item, selected)]]" class$="[[_computedClass(selected)]]">
+											<img class="ff-mimg" src="https://image.tmdb.org/t/p/w376[[item.poster_path]]">
+			                <div class="pad">
+			                  <div class="primary">
+			                    [[item.original_title]]
+			                  </div>
+			                  <div class="secondary dim">[[item.overview]]</div>
+			                </div>
+			                <iron-icon icon$="[[iconForItem(selected)]]" class="star"></iron-icon>
+			              </div>
+			              <div class="border"></div>
+			            </div>
+			          </template>
+			        </iron-list>
+
+			<div id="starredView" hidden$="[[!showSelection]]">
+          <template is="dom-if" if="[[!selectedItems.length]]">
+					<div class="noSelection">Rated Movies</div>
+          </template>
+
+          <iron-list id="selectedItemsList" items="[[selectedItems]]" hidden$="[[!selectedItems.length]]">
+            <template>
+              <paper-item on-tap="_unselect" tabindex="0">[[item.original_title]]</paper-item>
+            </template>
+          </iron-list>
+        </div>
+
+	 </div>
+  </template>
+</dom-module>
+
+
+<script>
+    HTMLImports.whenReady(function() {
+
+      Polymer({
+        is: 'rate-movies',
+
+        properties: {
+          selectedItems: {
+            type: Object
+          },
+
+          showSelection: {
+            type: Boolean,
+            value: true,
+            observer: '_showSelectionChanged'
+          }
+        },
+
+        iconForItem: function(isSelected) {
+          return isSelected ? 'star' : 'star-border';
+        },
+        _computedClass: function(isSelected) {
+          var classes = 'item';
+          if (isSelected) {
+            classes += ' selected';
+          }
+          return classes;
+        },
+
+        _unselect: function(e) {
+          this.$.itemsList.deselectItem(e.model.item);
+        },
+
+        _toggleStarredView: function() {
+          this.showSelection = !this.showSelection;
+        },
+
+        _showSelectionChanged: function() {
+          this.$.selectedItemsList.fire('resize');
+        },
+
+        _getAriaLabel: function(item, selected) {
+          return selected ? 'Deselect ' + item.name : 'Select ' + item.name;
+        }
+      });
+
+   });
+
+</script>

@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+<dom-module id="show-choices">
+<template>
+
+<style is="custom-style">
+	paper-item.ff-custom {
+			min-height: var(--paper-item-min-height, 120px);
+			--paper-item-selected : {
+				background-color: var(--paper-green-500) !important;
+				color: white !important;
+			}
+		};
+</style>
+	
+<paper-menu>
+	<paper-item class="ff-custom">
+		[[ff_option1]]
+	</paper-item>
+	<paper-item class="ff-custom">
+		[[ff_option2]]
+	</paper-item>
+	<paper-item class="ff-custom">
+		[[ff_option3]]
+	</paper-item>
+</paper-menu>
+
+</template>
+
+<script>
+	Polymer({
+	  is: "show-choices",
+	  ready: function() {
+	    this.ff_option1 = "RATE MOVIES";
+	    this.ff_option2 = "CREATE POLL";
+	    this.ff_option3 = "PARTICIPATE POLL";
+	  }
+	});
+</script>
+</dom-module>

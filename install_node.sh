@@ -38,6 +38,7 @@ install_required () {
 
   npm install -g polyserve
   npm install -g grunt-cli
+  npm install -g bower
 
 }
 
