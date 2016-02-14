@@ -21,8 +21,7 @@ bootstrap() {
 #bower install --save PolymerElements/paper-menu
 #bower install --save PolymerElements/paper-scroll-header-panel
 #bower install --save PolymerElements/paper-button
+#bower install --save PolymerElements/paper-badge
 
-bower install --save PolymerElements/paper-badge
 
-
-#bower install --save page.js
+bower install page.js

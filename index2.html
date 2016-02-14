@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+<link rel="import" href="bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="routes.html">
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <script src="bower_components/page/page.js"></script>
+</head>
+
+<body>
+
+
+<template is="dom-bind" id="app">
+    <paper-drawer-panel>
+      <paper-header-panel drawer="">
+        <paper-toolbar>Menu</paper-toolbar>
+        
+        <more-route-selector>
+          <paper-menu>
+            <paper-item label="Home" route="home">
+              <!--
+                  The expression   urlFor('home')   can't work in a
+                  dom-bind template, as it should be an anonymous computed property.
+                  If you convert it into a Polymer element then polyup should be able to
+                  upgrade it.
+               -->
+              <a href$="{{urlFor('home')}}"></a>
+            </paper-item>
+            <paper-item label="Users" route="users">
+              <!--
+                  The expression   urlFor('users')   can't work in a
+                  dom-bind template, as it should be an anonymous computed property.
+                  If you convert it into a Polymer element then polyup should be able to
+                  upgrade it.
+               -->
+              <a href$="{{urlFor('users')}}"></a>
+            </paper-item>
+            <paper-item label="Contact" route="contact">
+              <!--
+                  The expression   urlFor('contact')   can't work in a
+                  dom-bind template, as it should be an anonymous computed property.
+                  If you convert it into a Polymer element then polyup should be able to
+                  upgrade it.
+               -->
+              <a href$="{{urlFor('contact')}}"></a>
+            </paper-item>
+          </paper-menu>
+        </more-route-selector>
+
+      </paper-header-panel>
+      <paper-header-panel main="">
+        <paper-toolbar>
+          <paper-icon-button icon="menu" paper-drawer-toggle=""></paper-icon-button>
+          <div flex="">My App</div>
+        </paper-toolbar>
+        <main>          
+          
+          <more-route-selector selectedparams="{{params}}">
+            <iron-pages>
+              <section route="home">
+                <h1>Home</h1>
+                <div>This is the home section</div>
+              </section>
+
+              <section route="users">
+                <h1>Users</h1>
+                <div>This is the users section</div>
+                <!--
+                    The expression   urlFor('user-info', {name: 'Rob'})   can't work in a
+                    dom-bind template, as it should be an anonymous computed property.
+                    If you convert it into a Polymer element then polyup should be able to
+                    upgrade it.
+                 -->
+                <a href$="{{urlFor('user-info', {name: 'Rob'})}}">
+                  Rob
+                </a>
+              </section>
+
+              <section route="user-info">
+                <h1>User: <span>{{params.name}}</span></h1>
+                <div>This is <span>{{params.name}}</span>'s section</div>
+              </section>
+
+              <section route="contact">
+                <h1>Contact</h1>
+                <div>Gimme a shout!</div>
+              </section>
+            </iron-pages>
+          </more-route-selector>
+
+        </main>
+      </paper-header-panel>
+    </paper-drawer-panel>
+
+  </template>
+
+</body>
+
+</html>

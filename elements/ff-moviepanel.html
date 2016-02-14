@@ -1,0 +1,67 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="ff-moviepanel">
+
+  paper-toolbar {
+		background-color: var(--paper-green-500);
+	}
+
+  .flexchild {
+    @apply(--layout-flex);
+  }
+
+	[main] {
+	  background-color: #F9F9F9;
+	}
+	[drawer] {
+	  background-color: #FFFFFF;
+		color : var(--paper-green-500);
+	}
+	core-drawer-panel:not([narrow]) #navicon {
+		display: none;
+	}
+
+</style>
+
+<template > 
+
+<paper-drawer-panel id="ff_paper_drawer_id">
+  <paper-header-panel drawer>
+    <paper-toolbar></paper-toolbar>
+    <div> Drawer content... </div>
+  </paper-header-panel>
+  <paper-header-panel main>
+    <paper-toolbar></paper-toolbar>
+    <div> Main content... </div>
+  </paper-header-panel>
+</paper-drawer-panel>
+</template>
+
+</dom-module>
+
+
+<script>
+	Polymer({
+	  is: "ff-moviepanel",
+	  ready: function() {
+			var navicon = document.getElementById('navicon');
+			var drawerPanel = document.getElementById('drawerPanel');
+
+			var pdp = document.getElementById('ff_paper_drawer_id');
+			//setInterval(pdp.togglePanel(),1000);
+			
+			//navicon.addEventListener('click', function() {
+			//	drawerPanel.togglePanel();
+			//});
+	  }
+	});
+</script>
+
