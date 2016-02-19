@@ -1,0 +1,32 @@
+{
+  "name": "polymer-test",
+  "version": "1.0.0",
+  "description": "Component based deployment",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "require-resolve": "^0.0.2",
+    "resolve": "^1.1.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-vulcanize": "^6.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rootid/polymer-test.git"
+  },
+  "keywords": [
+    "polyfill",
+    "webcomponents"
+  ],
+  "author": "VS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rootid/polymer-test/issues"
+  },
+  "homepage": "https://github.com/rootid/polymer-test#readme"
+}
