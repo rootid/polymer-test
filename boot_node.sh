@@ -7,8 +7,8 @@ get_stable_node() {
 
   if [ ${?} -eq 0 ]
   then
-      echo "Please remove existing node"
-      exit 1
+      echo "Node alerady installed."
+      return 0
   fi
 
   if [ -z ${USER} ]
@@ -31,9 +31,8 @@ get_stable_node() {
 
 
 
-#get_stable_node
 
-readonly reqNPMlist=(polyserve grunt-cli bower bower vulcanize)
+readonly reqNPMlist=(polyserve grunt bower bower vulcanize)
 
 install_required () {
 
@@ -52,5 +51,5 @@ install_required () {
   done
 }
 
-
+get_stable_node
 install_required 
