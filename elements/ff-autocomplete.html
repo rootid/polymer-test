@@ -1,0 +1,85 @@
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+
+
+<dom-module id="ff-autocomplete">
+    <style>
+    iron-collapse {
+        box-shadow: 6px;
+    }
+
+    paper-button {
+        width: 100%;
+        text-transform: none;
+    }
+    </style>
+    <template>
+        <paper-input-container>
+            <label>{{label}}</label>
+            <content select=".content"></content>
+            <input id="searchBox" class="paper-input-input" is="iron-input" bind-value="{{searchValue::input}}"></input>
+        </paper-input-container>
+        <iron-collapse id="collapse">
+            <paper-material>
+                <div>
+									<template id="resultList" is="dom-repeat" items="{{movieNames}}" >
+										<!-- filter="_listFilter"> -->
+                        <paper-item>
+                            <paper-button on-tap="_selectItem">{{item.name}}</paper-button>
+                        </paper-item>
+                    </template>
+                </div>
+            </paper-material>
+        </iron-collapse>
+    </template>
+</dom-module>
+<script>
+(function() {
+    Polymer({
+        is: "ff-autocomplete",
+        properties: {
+            movieNames : Array,
+            label: String,
+            value: {
+                type: Object,
+            },
+            searchValue: {
+                type: String,
+                value: '',
+                observer: "_valueChanged"
+            }
+        },
+        ready: function() {
+            this.$.resultList.render()
+        },
+        _valueChanged: function(e) {
+            var collapse = this.$.collapse
+            if (e != '' && !collapse.opened) {
+                this.$.resultList.render()
+                collapse.toggle()
+            } else
+            if (e == '' && collapse.opened) {
+                collapse.toggle()
+            }
+        },
+        //_listFilter: function(item) {
+        //    return item.name.toLowerCase().includes(
+        //        this.searchValue.toLowerCase()
+        //    )
+        //},
+        _selectItem: function(event) {
+            this.set('searchValue', event.model.item.name)
+            this.set('value', event.model.item)
+            collapse.toggle()
+        }
+    })
+})()
+</script>

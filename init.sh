@@ -22,6 +22,8 @@ bootstrap() {
 #bower install --save PolymerElements/paper-scroll-header-panel
 #bower install --save PolymerElements/paper-button
 #bower install --save PolymerElements/paper-badge
+#bower install --save PolymerElements/paper-input
+#bower install --save PolymerElements/paper-material
+bower install --save PolymerElements/iron-collapse
 
-
-bower install page.js
+#bower install page.js
